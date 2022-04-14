@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 30m #30分钟，测试的话时间不能太短，否则不准。m是分钟单位，s是秒的单位，h是小时的单位，不写单位的话默认是毫秒
+  netty:
+    connection-timeout: 18000000
+
+spring:
+  application:
+    name: burpspread
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/bruprequest?allowPublicKeyRetrieval=true&useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.jcl.burpspread.domain
+  configuration:
+    mapUnderscoreToCamelCase: true
+
+
+map:
+  local:
+    env: 测试环境
+
+
+#debug: true

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- -->
+
+<generatorConfiguration>
+    <properties resource="generator/config.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="${mapper.plugin}">
+            <property name="mappers" value="${mapper.Mapper}"/>
+        </plugin>
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/bruprequest?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;nullCatalogMeansCurrent=true"
+                        driverClass="com.mysql.cj.jdbc.Driver"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}">
+            <property name="rootClass" value="com.jcl.burpspread.domain.BaseDO"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+
+        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
+                             type="XMLMAPPER"/>
+
+        <!-- 生成用户的相关类 -->
+        <table tableName="databuckets" domainObjectName="DataBucketsDO" enableCountByExample="true" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+    </context>
+<!--    <context id="Medical" targetRuntime="MyBatis3Simple" defaultModelType="flat">-->
+<!--        <property name="beginningDelimiter" value="`"/>-->
+<!--        <property name="endingDelimiter" value="`"/>-->
+
+<!--        <plugin type="${mapper.plugin}">-->
+<!--            <property name="mappers" value="${mapper.Mapper}"/>-->
+<!--        </plugin>-->
+<!--        <jdbcConnection connectionURL="jdbc:mysql://10.1.34.88:3306/medicalrecord_avatar?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"-->
+<!--                        driverClass="com.mysql.cj.jdbc.Driver"-->
+<!--                        userId="callring2"-->
+<!--                        password="1eHG6tNs5DG5v26q">-->
+<!--            <property name="nullCatalogMeansCurrent" value="true" />-->
+<!--        </jdbcConnection>-->
+<!--        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}">-->
+<!--            <property name="rootClass" value="com.jcl.testbackstage.domain.BaseDO"/>-->
+<!--        </javaModelGenerator>-->
+
+<!--        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>-->
+
+<!--        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"-->
+<!--                             type="XMLMAPPER"/>-->
+
+<!--        &lt;!&ndash; 生成用户的相关类 &ndash;&gt;-->
+<!--        <table schema="medicalrecord_avatar" tableName="medicalrecordindexs" domainObjectName="MedicalrecordDO" enableCountByExample="true" enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" enableUpdateByExample="false" >-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+<!--    </context>-->
+
+</generatorConfiguration>

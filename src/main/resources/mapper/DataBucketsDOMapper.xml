@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jcl.burpspread.dao.DataBucketsDOMapper">
+  <resultMap id="BaseResultMap" type="com.jcl.burpspread.domain.DataBucketsDO">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="methodname" jdbcType="VARCHAR" property="methodname" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="patientid" jdbcType="BIGINT" property="patientid" />
+    <result column="systemname" jdbcType="VARCHAR" property="systemname" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="contenttype" jdbcType="INTEGER" property="contenttype" />
+    <result column="requestmethod" jdbcType="VARCHAR" property="requestmethod" />
+    <result column="cookies" jdbcType="VARCHAR" property="cookies" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
+    <result column="utime" jdbcType="TIMESTAMP" property="utime" />
+    <result column="ver" jdbcType="INTEGER" property="ver" />
+    <result column="params" jdbcType="LONGVARCHAR" property="params" />
+  </resultMap>
+
+  <select id="selectRequest" resultType="com.jcl.testbackstage.domain.DataBucketsDO">
+    select * from databuckets
+    where `userid` = #{userid} and `patientid`=#{patientid} and `methodname`=#{methodname}
+  </select>
+</mapper>
